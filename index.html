@@ -158,9 +158,6 @@
     .nav-brand {
       color: var(--ink) !important;
       font-weight: 500;
-      font-family: 'Newsreader', Georgia, serif;
-      font-size: 20px;
-      letter-spacing: -0.01em;
     }
 
     /* ─── Page wrapper ─── */
@@ -859,6 +856,11 @@
       .nav-left .nav-links,
       .nav-right { display: none; }
       .hamburger { display: flex; }
+      .nav-brand {
+        font-family: 'Newsreader', Georgia, serif;
+        font-size: 20px;
+        letter-spacing: -0.01em;
+      }
     }
 
   </style>
@@ -1389,7 +1391,9 @@
 
   function onScroll() {
     const currentY = window.scrollY;
-    if (currentY <= 0) {
+    if (window.innerWidth > 700) {
+      navEl.classList.remove('nav-hidden');
+    } else if (currentY <= 0) {
       navEl.classList.remove('nav-hidden');
     } else if (currentY > lastScrollY) {
       navEl.classList.add('nav-hidden');
