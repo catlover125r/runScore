@@ -54,6 +54,10 @@
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--rule);
+      transition: transform .3s ease;
+    }
+    nav.nav-hidden {
+      transform: translateY(-100%);
     }
 
     .nav-inner {
@@ -148,6 +152,9 @@
     .nav-brand {
       color: var(--ink) !important;
       font-weight: 500;
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 20px;
+      letter-spacing: -0.01em;
     }
 
     /* ─── Page wrapper ─── */
@@ -741,12 +748,38 @@
       border-bottom: 2px solid var(--rule);
       margin-bottom: 4px;
     }
-    .sidebar-section-label {
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--ink-4);
-      padding: 16px 28px 4px;
+    .sidebar-dropdown-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--ink-2);
+      padding: 13px 28px;
+      border-bottom: 1px solid var(--rule);
+      cursor: pointer;
+      transition: color .15s, background .15s;
+    }
+    .sidebar-dropdown-toggle:hover { color: var(--ink); background: var(--rule-soft); }
+    .sidebar-dropdown-toggle::after {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-right: 1.5px solid var(--ink-3);
+      border-bottom: 1.5px solid var(--ink-3);
+      transform: rotate(45deg);
+      transition: transform .25s;
+      flex-shrink: 0;
+    }
+    .sidebar-dropdown-toggle.open::after {
+      transform: rotate(225deg);
+    }
+    .sidebar-dropdown-items {
+      display: none;
+      flex-direction: column;
+    }
+    .sidebar-dropdown-items.open {
+      display: flex;
     }
     .sidebar .sidebar-sub {
       padding-left: 40px;
@@ -829,12 +862,14 @@
 <div class="sidebar" id="sidebar">
   <a class="sidebar-brand" href="#" onclick="closeSidebar()">RunScore</a>
   <a href="#geography" onclick="closeSidebar()">Geography</a>
-  <div class="sidebar-section-label">Health</div>
-  <a href="#health" onclick="closeSidebar()">Overview</a>
-  <a class="sidebar-sub" href="#health-obesity" onclick="closeSidebar()">Obesity Rate</a>
-  <a class="sidebar-sub" href="#health-diabetes" onclick="closeSidebar()">Diabetes Rate</a>
-  <a class="sidebar-sub" href="#health-lifeexp" onclick="closeSidebar()">Life Expectancy</a>
-  <a class="sidebar-sub" href="#health-fairpoor" onclick="closeSidebar()">Fair / Poor Health</a>
+  <div class="sidebar-dropdown-toggle" id="sidebarHealthToggle">Health</div>
+  <div class="sidebar-dropdown-items" id="sidebarHealthItems">
+    <a class="sidebar-sub" href="#health" onclick="closeSidebar()">Overview</a>
+    <a class="sidebar-sub" href="#health-obesity" onclick="closeSidebar()">Obesity Rate</a>
+    <a class="sidebar-sub" href="#health-diabetes" onclick="closeSidebar()">Diabetes Rate</a>
+    <a class="sidebar-sub" href="#health-lifeexp" onclick="closeSidebar()">Life Expectancy</a>
+    <a class="sidebar-sub" href="#health-fairpoor" onclick="closeSidebar()">Fair / Poor Health</a>
+  </div>
   <a href="#realestate" onclick="closeSidebar()">Real Estate</a>
   <a href="#communities" onclick="closeSidebar()">Communities</a>
   <a href="#method" onclick="closeSidebar()">Method</a>
@@ -1336,6 +1371,28 @@
   window.addEventListener('scroll', updateReveal, { passive: true });
   window.addEventListener('resize', updateReveal, { passive: true });
 
+  // ── Show/hide nav on scroll direction ──
+  const navEl = document.querySelector('nav');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function onScroll() {
+    const currentY = window.scrollY;
+    if (currentY <= 0) {
+      navEl.classList.remove('nav-hidden');
+    } else if (currentY > lastScrollY) {
+      navEl.classList.add('nav-hidden');
+    } else {
+      navEl.classList.remove('nav-hidden');
+    }
+    lastScrollY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
+  }, { passive: true });
+
   // ── Hamburger / Sidebar ──
   const hamburger = document.getElementById('hamburger');
   const sidebar   = document.getElementById('sidebar');
@@ -1358,6 +1415,14 @@
     sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
   });
   overlay.addEventListener('click', closeSidebar);
+
+  // ── Sidebar health dropdown ──
+  const healthToggle = document.getElementById('sidebarHealthToggle');
+  const healthItems  = document.getElementById('sidebarHealthItems');
+  healthToggle.addEventListener('click', () => {
+    healthToggle.classList.toggle('open');
+    healthItems.classList.toggle('open');
+  });
 
   // ── Smooth scroll ──
   document.querySelectorAll('nav a[href^="#"], .sidebar a[href^="#"]').forEach(link => {
