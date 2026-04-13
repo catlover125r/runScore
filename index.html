@@ -664,8 +664,8 @@
     @media (max-width: 700px) {
       :root { --pad: 16px; --gap: 8px; }
 
-      .nav-inner { height: 42px; gap: 12px; }
-      .nav-left { gap: 14px; overflow-x: auto; }
+      .nav-inner { height: 42px; justify-content: space-between; }
+      .nav-left { flex: 1; }
       nav a { font-size: 11px; }
 
       .hero {
@@ -707,20 +707,21 @@
       display: none;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       gap: 5px;
       width: 36px;
       height: 36px;
-      padding: 6px;
+      flex-shrink: 0;
       background: none;
       border: none;
       cursor: pointer;
-      margin-left: auto;
+      padding: 0;
     }
     .hamburger span {
       display: block;
       width: 20px;
-      height: 1.5px;
-      background: var(--ink);
+      height: 2px;
+      background: #1c1c1c;
       border-radius: 2px;
       transition: transform .25s, opacity .25s;
     }
