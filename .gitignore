@@ -9,6 +9,7 @@ patent/
 build_patent_docs.py
 build_docx.py
 *.docx
+data/pull_runsignup.py
 
 # Python cache
 __pycache__/
