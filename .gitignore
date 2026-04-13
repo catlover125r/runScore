@@ -1,8 +1,8 @@
 # Raw data — too large for GitHub
 data/raw/
 
-# Build scripts not needed for the site
-resources/screencapture-chester-how-2026-04-12-14_52_10.pdf
+# Resources folder
+resources/
 
 # Python cache
 __pycache__/
