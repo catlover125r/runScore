@@ -662,7 +662,6 @@
     <div class="nav-left">
       <a class="nav-brand" href="#">RunScore</a>
       <a href="#geography">Geography</a>
-      <a href="#realestate">Real Estate</a>
       <div class="nav-dropdown">
         <a href="#health">Health</a>
         <div class="dropdown-menu">
@@ -672,6 +671,7 @@
           <a href="#health-fairpoor">Fair / Poor Health</a>
         </div>
       </div>
+      <a href="#realestate">Real Estate</a>
       <a href="#communities">Communities</a>
       <a href="#method">Method</a>
     </div>
@@ -770,58 +770,6 @@
     </div>
   </section>
 
-  <!-- ─── Real Estate: text LEFT, chart RIGHT ─── -->
-  <section id="realestate">
-    <div class="feature flip">
-      <div class="feat-img">
-        <img src="figures/fig1_runscore_vs_homevalue.png" alt="RunScore vs. Home Value">
-      </div>
-      <div class="card">
-        <div class="card-label">Findings · Real Estate</div>
-        <div class="card-body">
-          <div class="card-title">RunScore predicts home values independently of income</div>
-          <div class="card-text">In multivariate OLS regression controlling for income, unemployment, insurance coverage, and life expectancy, RunScore remains a significant predictor of county-level home values. Income alone explains 57.8% of variance. Adding RunScore pushes that to 63.3% — a significant ΔR² of +2.2 points.</div>
-
-          <div class="reg-table" style="margin:14px 0 14px;">
-            <div class="reg-cell reg-head">Income only</div>
-            <div class="reg-cell reg-head">+ Controls</div>
-            <div class="reg-cell reg-head">+ RunScore</div>
-            <div class="reg-cell" style="color:var(--ink-3);">R² = 0.578</div>
-            <div class="reg-cell" style="color:var(--ink-3);">R² = 0.611</div>
-            <div class="reg-cell reg-highlight">R² = 0.633</div>
-          </div>
-
-          <div class="card-text">
-            Each 10-point RunScore increase → +3.5% → <strong style="font-weight:500;color:var(--ink);">+$7,885</strong> in home value.<br>
-            Each 25-point increase → +9.0% → <strong style="font-weight:500;color:var(--ink);">+$20,237</strong>.<br>
-            Each 50-point increase → +18.9% → <strong style="font-weight:500;color:var(--ink);">+$42,304</strong>.
-          </div>
-          <hr class="divider">
-          <div class="card-text">The effect is actually <em>stronger in rural counties</em> (β = 0.00374) than metro counties (β = 0.00229) — RunScore is most informative exactly where Walk Score and transit data have the thinnest coverage.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="stat-row c2" style="margin-top:var(--gap);">
-      <div class="card bg-cream">
-        <div class="card-label">5-Year Appreciation Signal</div>
-        <div class="stat-body">
-          <div class="badge b-orange">LEADING INDICATOR</div>
-          <div class="stat-num">+0.9 pts</div>
-          <div class="stat-note">5-yr appreciation per +10 RunScore · β = 0.087 · p &lt; 0.001<br>Notably, income is <em>not</em> a significant predictor in the appreciation model — RunScore is</div>
-        </div>
-      </div>
-      <div class="card bg-sky">
-        <div class="card-label">Rural Advantage</div>
-        <div class="stat-body">
-          <div class="badge b-blue">NON-METRO COUNTIES</div>
-          <div class="stat-num">+0.37%</div>
-          <div class="stat-note">home value per RunScore point in non-metro counties (RUCC 4–9)<br>vs. +0.23% in metro — most signal where platforms are blindest</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ─── Health: 4 individual charts ─── -->
   <section id="health">
 
@@ -901,6 +849,58 @@
       </div>
     </div>
 
+  </section>
+
+  <!-- ─── Real Estate: text LEFT, chart RIGHT ─── -->
+  <section id="realestate">
+    <div class="feature flip">
+      <div class="feat-img">
+        <img src="figures/fig1_runscore_vs_homevalue.png" alt="RunScore vs. Home Value">
+      </div>
+      <div class="card">
+        <div class="card-label">Findings · Real Estate</div>
+        <div class="card-body">
+          <div class="card-title">RunScore predicts home values independently of income</div>
+          <div class="card-text">In multivariate OLS regression controlling for income, unemployment, insurance coverage, and life expectancy, RunScore remains a significant predictor of county-level home values. Income alone explains 57.8% of variance. Adding RunScore pushes that to 63.3% — a significant ΔR² of +2.2 points.</div>
+
+          <div class="reg-table" style="margin:14px 0 14px;">
+            <div class="reg-cell reg-head">Income only</div>
+            <div class="reg-cell reg-head">+ Controls</div>
+            <div class="reg-cell reg-head">+ RunScore</div>
+            <div class="reg-cell" style="color:var(--ink-3);">R² = 0.578</div>
+            <div class="reg-cell" style="color:var(--ink-3);">R² = 0.611</div>
+            <div class="reg-cell reg-highlight">R² = 0.633</div>
+          </div>
+
+          <div class="card-text">
+            Each 10-point RunScore increase → +3.5% → <strong style="font-weight:500;color:var(--ink);">+$7,885</strong> in home value.<br>
+            Each 25-point increase → +9.0% → <strong style="font-weight:500;color:var(--ink);">+$20,237</strong>.<br>
+            Each 50-point increase → +18.9% → <strong style="font-weight:500;color:var(--ink);">+$42,304</strong>.
+          </div>
+          <hr class="divider">
+          <div class="card-text">The effect is actually <em>stronger in rural counties</em> (β = 0.00374) than metro counties (β = 0.00229) — RunScore is most informative exactly where Walk Score and transit data have the thinnest coverage.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-row c2" style="margin-top:var(--gap);">
+      <div class="card bg-cream">
+        <div class="card-label">5-Year Appreciation Signal</div>
+        <div class="stat-body">
+          <div class="badge b-orange">LEADING INDICATOR</div>
+          <div class="stat-num">+0.9 pts</div>
+          <div class="stat-note">5-yr appreciation per +10 RunScore · β = 0.087 · p &lt; 0.001<br>Notably, income is <em>not</em> a significant predictor in the appreciation model — RunScore is</div>
+        </div>
+      </div>
+      <div class="card bg-sky">
+        <div class="card-label">Rural Advantage</div>
+        <div class="stat-body">
+          <div class="badge b-blue">NON-METRO COUNTIES</div>
+          <div class="stat-num">+0.37%</div>
+          <div class="stat-note">home value per RunScore point in non-metro counties (RUCC 4–9)<br>vs. +0.23% in metro — most signal where platforms are blindest</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ─── Communities: text LEFT, chart RIGHT ─── -->
