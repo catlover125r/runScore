@@ -664,47 +664,6 @@
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
 
-    /* ─── Mobile ─── */
-    @media (max-width: 700px) {
-      :root { --pad: 16px; --gap: 8px; }
-
-      .nav-inner { height: 42px; justify-content: space-between; }
-      nav a { font-size: 11px; }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 28px;
-      }
-      .hero-right { align-self: auto; margin-top: 4px; }
-      .hero-wordmark { font-size: 52px; }
-
-      .feature,
-      .feature.flip {
-        grid-template-columns: 1fr;
-      }
-      .feature .feat-img,
-      .feature .card { order: unset !important; }
-      .feature.flip .feat-img { order: 1 !important; }
-      .feature.flip .card    { order: 2 !important; }
-
-      .feat-img img { max-height: 260px; }
-
-      .stat-row.c2,
-      .stat-row.c3 { grid-template-columns: 1fr; }
-
-      .method-layout { grid-template-columns: 1fr; gap: 32px; }
-
-      .hero-wordmark { font-size: 48px; }
-
-      .lb-wrap { flex-direction: column; max-width: 96vw; max-height: 92vh; }
-      .lb-img-wrap { flex: none; width: 100%; max-height: 55vh; }
-      .lb-card { width: 100%; max-height: 35vh; overflow-y: auto; }
-
-      .nav-left .nav-links,
-      .nav-right { display: none; }
-      .hamburger { display: flex; }
-    }
-
     /* ─── Hamburger button ─── */
     .hamburger {
       display: none;
@@ -813,6 +772,48 @@
       color: var(--ink-2) !important;
       background: var(--rule-soft);
     }
+
+    /* ─── Mobile ─── */
+    @media (max-width: 700px) {
+      :root { --pad: 16px; --gap: 8px; }
+
+      .nav-inner { height: 42px; justify-content: space-between; }
+      nav a { font-size: 11px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 28px;
+      }
+      .hero-right { align-self: auto; margin-top: 4px; }
+      .hero-wordmark { font-size: 52px; }
+
+      .feature,
+      .feature.flip {
+        grid-template-columns: 1fr;
+      }
+      .feature .feat-img,
+      .feature .card { order: unset !important; }
+      .feature.flip .feat-img { order: 1 !important; }
+      .feature.flip .card    { order: 2 !important; }
+
+      .feat-img img { max-height: 260px; }
+
+      .stat-row.c2,
+      .stat-row.c3 { grid-template-columns: 1fr; }
+
+      .method-layout { grid-template-columns: 1fr; gap: 32px; }
+
+      .hero-wordmark { font-size: 48px; }
+
+      .lb-wrap { flex-direction: column; max-width: 96vw; max-height: 92vh; }
+      .lb-img-wrap { flex: none; width: 100%; max-height: 55vh; }
+      .lb-card { width: 100%; max-height: 35vh; overflow-y: auto; }
+
+      .nav-left .nav-links,
+      .nav-right { display: none; }
+      .hamburger { display: flex; }
+    }
+
   </style>
 </head>
 <body>
@@ -1297,40 +1298,39 @@
     '.card, .feat-img, .method-layout, .hero-wordmark, .stat-row > .card'
   );
 
-  const isMobile = () => window.innerWidth <= 700;
+  const mobile = () => window.innerWidth <= 700;
 
   revealEls.forEach(el => {
     el.classList.add('reveal');
 
-    if (!isMobile()) {
-      // Stagger cards within the same stat-row
+    if (!mobile()) {
       const parent = el.parentElement;
       if (parent && parent.classList.contains('stat-row')) {
         const siblings = Array.from(parent.children);
-        const idx = siblings.indexOf(el);
-        el.style.transitionDelay = `${idx * 0.1}s`;
+        el.style.transitionDelay = `${siblings.indexOf(el) * 0.1}s`;
       }
-
-      // Stagger feat-img / card within the same feature row
       if (parent && parent.classList.contains('feature')) {
         const siblings = Array.from(parent.children);
-        const idx = siblings.indexOf(el);
-        el.style.transitionDelay = `${idx * 0.12}s`;
+        el.style.transitionDelay = `${siblings.indexOf(el) * 0.12}s`;
       }
     }
   });
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+  function updateReveal() {
+    const vh = window.innerHeight;
+    revealEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh - 10 && rect.bottom > 0) {
+        el.classList.add('visible');
       } else {
-        entry.target.classList.remove('visible');
+        el.classList.remove('visible');
       }
     });
-  }, { threshold: 0.04, rootMargin: '0px 0px -10px 0px' });
+  }
 
-  revealEls.forEach(el => revealObserver.observe(el));
+  updateReveal();
+  window.addEventListener('scroll', updateReveal, { passive: true });
+  window.addEventListener('resize', updateReveal, { passive: true });
 
   // ── Hamburger / Sidebar ──
   const hamburger = document.getElementById('hamburger');
