@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RunScore</title>
   <meta name="description" content="A county-level index measuring running activity and infrastructure across all 3,143 U.S. counties.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -658,6 +659,44 @@
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
+
+    /* ─── Mobile ─── */
+    @media (max-width: 700px) {
+      :root { --pad: 16px; --gap: 8px; }
+
+      .nav-inner { height: 42px; gap: 12px; }
+      .nav-left { gap: 14px; overflow-x: auto; }
+      nav a { font-size: 11px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 28px;
+      }
+      .hero-right { align-self: auto; margin-top: 4px; }
+      .hero-wordmark { font-size: 52px; }
+
+      .feature,
+      .feature.flip {
+        grid-template-columns: 1fr;
+      }
+      .feature .feat-img,
+      .feature .card { order: unset !important; }
+      .feature.flip .feat-img { order: 1 !important; }
+      .feature.flip .card    { order: 2 !important; }
+
+      .feat-img img { max-height: 260px; }
+
+      .stat-row.c2,
+      .stat-row.c3 { grid-template-columns: 1fr; }
+
+      .method-layout { grid-template-columns: 1fr; gap: 32px; }
+
+      .hero-wordmark { font-size: 48px; }
+
+      .lb-wrap { flex-direction: column; max-width: 96vw; max-height: 92vh; }
+      .lb-img-wrap { flex: none; width: 100%; max-height: 55vh; }
+      .lb-card { width: 100%; max-height: 35vh; overflow-y: auto; }
+    }
   </style>
 </head>
 <body>
