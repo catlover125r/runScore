@@ -696,36 +696,175 @@
       .lb-wrap { flex-direction: column; max-width: 96vw; max-height: 92vh; }
       .lb-img-wrap { flex: none; width: 100%; max-height: 55vh; }
       .lb-card { width: 100%; max-height: 35vh; overflow-y: auto; }
+
+      .nav-left .nav-links,
+      .nav-right { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ─── Hamburger button ─── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      padding: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: auto;
+    }
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: transform .25s, opacity .25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ─── Sidebar overlay ─── */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      z-index: 300;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+    }
+    .sidebar-overlay.open { display: block; }
+
+    /* ─── Sidebar ─── */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 240px;
+      height: 100dvh;
+      background: #fff;
+      z-index: 400;
+      display: flex;
+      flex-direction: column;
+      padding: 56px 0 32px;
+      transform: translateX(100%);
+      transition: transform .3s cubic-bezier(.22,.68,0,1);
+      box-shadow: -8px 0 32px rgba(0,0,0,0.08);
+    }
+    .sidebar.open { transform: translateX(0); }
+
+    .sidebar a {
+      font-size: 14px;
+      color: var(--ink-2);
+      padding: 13px 28px;
+      border-bottom: 1px solid var(--rule);
+      transition: color .15s, background .15s;
+    }
+    .sidebar a:hover { color: var(--ink); background: var(--rule-soft); }
+    .sidebar .sidebar-brand {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--ink) !important;
+      padding: 0 28px 20px;
+      border-bottom: 2px solid var(--rule);
+      margin-bottom: 4px;
+    }
+    .sidebar-section-label {
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      padding: 16px 28px 4px;
+    }
+    .sidebar .sidebar-sub {
+      padding-left: 40px;
+      font-size: 13px;
+      color: var(--ink-3);
+      border-bottom: 1px solid var(--rule);
+    }
+    .sidebar .sidebar-sub:hover { color: var(--ink-2); background: var(--rule-soft); }
+    .sidebar-divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 8px 0;
+    }
+    .sidebar-actions {
+      margin-top: auto;
+      padding: 0 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .sidebar-actions a {
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      text-align: center;
+      padding: 10px;
+      font-size: 13px;
+      color: var(--ink-2) !important;
+      background: var(--rule-soft);
     }
   </style>
 </head>
 <body>
+
+<!-- ─── Sidebar overlay ─── -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ─── Sidebar ─── -->
+<div class="sidebar" id="sidebar">
+  <a class="sidebar-brand" href="#" onclick="closeSidebar()">RunScore</a>
+  <a href="#geography" onclick="closeSidebar()">Geography</a>
+  <div class="sidebar-section-label">Health</div>
+  <a href="#health" onclick="closeSidebar()">Overview</a>
+  <a class="sidebar-sub" href="#health-obesity" onclick="closeSidebar()">Obesity Rate</a>
+  <a class="sidebar-sub" href="#health-diabetes" onclick="closeSidebar()">Diabetes Rate</a>
+  <a class="sidebar-sub" href="#health-lifeexp" onclick="closeSidebar()">Life Expectancy</a>
+  <a class="sidebar-sub" href="#health-fairpoor" onclick="closeSidebar()">Fair / Poor Health</a>
+  <a href="#realestate" onclick="closeSidebar()">Real Estate</a>
+  <a href="#communities" onclick="closeSidebar()">Communities</a>
+  <a href="#method" onclick="closeSidebar()">Method</a>
+  <div class="sidebar-actions">
+    <a href="RunScore_Paper_Popler_2026.pdf" target="_blank">Paper ↗</a>
+    <a href="data/processed/master_county.csv" download="RunScore_county_data.csv">Data ↓</a>
+  </div>
+</div>
 
 <!-- ─── Nav ─── -->
 <nav>
   <div class="nav-inner">
     <div class="nav-left">
       <a class="nav-brand" href="#">RunScore</a>
-      <a href="#geography">Geography</a>
-      <div class="nav-dropdown">
-        <a href="#health">Health</a>
-        <div class="dropdown-menu">
-          <div class="dropdown-menu-inner">
-            <a href="#health-obesity">Obesity Rate</a>
-            <a href="#health-diabetes">Diabetes Rate</a>
-            <a href="#health-lifeexp">Life Expectancy</a>
-            <a href="#health-fairpoor">Fair / Poor Health</a>
+      <div class="nav-links">
+        <a href="#geography">Geography</a>
+        <div class="nav-dropdown">
+          <a href="#health">Health</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-menu-inner">
+              <a href="#health-obesity">Obesity Rate</a>
+              <a href="#health-diabetes">Diabetes Rate</a>
+              <a href="#health-lifeexp">Life Expectancy</a>
+              <a href="#health-fairpoor">Fair / Poor Health</a>
+            </div>
           </div>
         </div>
+        <a href="#realestate">Real Estate</a>
+        <a href="#communities">Communities</a>
+        <a href="#method">Method</a>
       </div>
-      <a href="#realestate">Real Estate</a>
-      <a href="#communities">Communities</a>
-      <a href="#method">Method</a>
     </div>
     <div class="nav-right">
       <a href="RunScore_Paper_Popler_2026.pdf" target="_blank">Paper ↗</a>
       <a href="data/processed/master_county.csv" download="RunScore_county_data.csv">Data ↓</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -1185,8 +1324,31 @@
 
   revealEls.forEach(el => revealObserver.observe(el));
 
+  // ── Hamburger / Sidebar ──
+  const hamburger = document.getElementById('hamburger');
+  const sidebar   = document.getElementById('sidebar');
+  const overlay   = document.getElementById('sidebarOverlay');
+
+  function openSidebar() {
+    sidebar.classList.add('open');
+    overlay.classList.add('open');
+    hamburger.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+    hamburger.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
+  });
+  overlay.addEventListener('click', closeSidebar);
+
   // ── Smooth scroll ──
-  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+  document.querySelectorAll('nav a[href^="#"], .sidebar a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const id = link.getAttribute('href');
