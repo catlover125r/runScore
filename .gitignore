@@ -4,6 +4,12 @@ data/raw/
 # Resources folder
 resources/
 
+# Patent docs and build scripts — keep off GitHub
+patent/
+build_patent_docs.py
+build_docx.py
+*.docx
+
 # Python cache
 __pycache__/
 *.pyc
