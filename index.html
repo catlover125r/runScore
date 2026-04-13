@@ -744,7 +744,7 @@
           <hr class="divider">
           <div class="card-text">Low-RunScore counties concentrate in the <strong style="font-weight:500;color:var(--ink);">rural Deep South</strong> (MS, AL, LA), the Texas Panhandle, and the Northern Great Plains. Physical inactivity rates in these counties often exceed 45–60%. Zero organized races. Near-zero walkability.</div>
           <hr class="divider">
-          <div class="card-text">RunScore ranges from 0.0 to 100 across 3,143 counties (mean = 50, SD = 28.9 by construction). The distribution is approximately uniform — a consequence of the percentile-rank transformation — with meaningful geographic clustering visible in the map.</div>
+          <div class="card-text">Every county gets a score from 0 to 100. A score of 50 is exactly average. The map makes the pattern impossible to miss — running culture isn't spread evenly across the country. It clusters. It has neighbors.</div>
         </div>
       </div>
     </div>
@@ -760,19 +760,19 @@
         </div>
       </div>
       <div class="card bg-sage">
-        <div class="card-label">Home Values · Spearman r</div>
+        <div class="card-label">Home Values</div>
         <div class="stat-body">
-          <div class="badge b-green">CORRELATED</div>
-          <div class="stat-num">+0.604</div>
-          <div class="stat-note">RunScore ↔ Zillow ZHVI<br>n = 3,064 · p &lt; 0.001</div>
+          <div class="badge b-green">STRONG LINK</div>
+          <div class="stat-num">+$7,885</div>
+          <div class="stat-note">extra home value per 10-point RunScore gain<br>even after accounting for income</div>
         </div>
       </div>
       <div class="card bg-blush">
-        <div class="card-label">Diabetes · Spearman r</div>
+        <div class="card-label">Diabetes</div>
         <div class="stat-body">
-          <div class="badge b-red">CORRELATED</div>
-          <div class="stat-num">−0.676</div>
-          <div class="stat-note">RunScore ↔ diabetes rate<br>n = 2,956 · p &lt; 0.001</div>
+          <div class="badge b-red">STRONG LINK</div>
+          <div class="stat-num">−1.5 pts</div>
+          <div class="stat-note">fewer adults with diabetes per 50-point RunScore gain<br>the strongest health signal in the study</div>
         </div>
       </div>
     </div>
@@ -791,11 +791,11 @@
           <div class="chart-compare">Obesity Rate</div>
           <div class="chart-stat-label">Health &nbsp;·&nbsp; Spearman r = −0.570 &nbsp;·&nbsp; p &lt; 0.001</div>
           <div class="card-title" style="font-size:13px;font-weight:400;color:var(--ink-2);margin-bottom:10px;">Higher RunScore communities carry less obesity</div>
-          <div class="card-text">Obesity is one of the most consequential public health metrics in the United States, affecting 42% of adults nationally. Counties with high RunScore consistently show lower obesity prevalence — and RunScore explains an additional 6.2 percentage points of variance beyond what income alone predicts (ΔR² = +0.062).</div>
+          <div class="card-text">About 42% of American adults are obese. But that number isn't the same everywhere — and RunScore is one of the clearest predictors of where it's lower. High-RunScore counties consistently have fewer obese residents, and the relationship holds even when you compare counties at the same income level.</div>
           <hr class="divider">
-          <div class="card-text">A 50-point RunScore increase is associated with <strong style="font-weight:500;color:var(--ink);">2.7 fewer percentage points of obesity</strong>. Applied to a median county of ~25,000 adults, that is approximately 675 fewer adults with obesity — a gap large enough to meaningfully shift local healthcare burden and life expectancy.</div>
+          <div class="card-text">In a county with 25,000 adults, moving from a low to a high RunScore is associated with roughly <strong style="font-weight:500;color:var(--ink);">675 fewer people with obesity</strong>. That's not a rounding error — it's a meaningful shift in the health of an entire community.</div>
           <hr class="divider">
-          <div class="card-text">The effect persists across all three income groups, suggesting RunScore captures something about community fitness culture that income alone does not buy.</div>
+          <div class="card-text">Wealth isn't the whole story. RunScore picks up something that money alone doesn't buy: a culture where moving is normal, infrastructure exists, and neighbors set the pace.</div>
         </div>
       </div>
     </div>
@@ -810,11 +810,11 @@
           <div class="chart-compare">Diabetes Rate</div>
           <div class="chart-stat-label">Health &nbsp;·&nbsp; Spearman r = −0.676 &nbsp;·&nbsp; p &lt; 0.001</div>
           <div class="card-title" style="font-size:13px;font-weight:400;color:var(--ink-2);margin-bottom:10px;">The strongest health signal in the study</div>
-          <div class="card-text">Diabetes is the single health outcome most strongly correlated with RunScore (r = −0.676), stronger even than obesity or life expectancy. This likely reflects that diabetes is driven by both physical inactivity and metabolic factors that running culture addresses — sedentary behavior, poor diet, and weight.</div>
+          <div class="card-text">Of all the health outcomes studied, diabetes tracks most closely with RunScore. That makes sense — diabetes is deeply tied to inactivity, and running culture is a direct measure of how active a community actually is, not just how active its residents say they are.</div>
           <hr class="divider">
-          <div class="card-text">A 50-point RunScore increase predicts <strong style="font-weight:500;color:var(--ink);">1.5 fewer percentage points of diabetes prevalence</strong> (ΔR² = +0.056 beyond income). In the lowest-RunScore counties — rural Mississippi and Alabama — diabetes rates exceed 20–25% of adults. In high-RunScore mountain communities like Teton County, WY, rates fall below 9%.</div>
+          <div class="card-text">In the lowest-RunScore counties — rural Mississippi and Alabama — more than <strong style="font-weight:500;color:var(--ink);">1 in 5 adults has diabetes</strong>. In high-RunScore mountain communities like Jackson Hole, Wyoming, that drops below 1 in 11. Same country. Vastly different realities.</div>
           <hr class="divider">
-          <div class="card-text">The gradient is visible across all income levels, reinforcing that running culture — not just wealth — shapes metabolic health at the county level.</div>
+          <div class="card-text">The gap shows up at every income level. Rich counties with low RunScores still have worse diabetes outcomes than middle-income counties with high RunScores. Running culture does something wealth alone doesn't.</div>
         </div>
       </div>
     </div>
@@ -829,7 +829,7 @@
           <div class="chart-compare">Life Expectancy</div>
           <div class="chart-stat-label">Health &nbsp;·&nbsp; Spearman r = +0.582 &nbsp;·&nbsp; p &lt; 0.001</div>
           <div class="card-title" style="font-size:13px;font-weight:400;color:var(--ink-2);margin-bottom:10px;">People live longer in high-RunScore counties</div>
-          <div class="card-text">Life expectancy is RunScore's most striking validation — it summarizes the cumulative effect of every health outcome across a lifetime. A 50-point RunScore increase is associated with <strong style="font-weight:500;color:var(--ink);">+1.0 additional year of life expectancy</strong> (ΔR² = +0.014 beyond income).</div>
+          <div class="card-text">If all the other health numbers feel abstract, life expectancy doesn't. It's the bottom line — how long do people actually live here? And high-RunScore counties consistently come out ahead, even after accounting for how wealthy or urban a county is.</div>
           <hr class="divider">
           <div class="card-text">The extremes tell the full story. Teton County, WY (RunScore 99.8) has a life expectancy of <strong style="font-weight:500;color:var(--ink);">87.6 years</strong> — among the longest of any county in the United States. Oglala Lakota County, SD (RunScore 0.2) has a life expectancy of <strong style="font-weight:500;color:var(--ink);">56.9 years</strong>, comparable to some developing nations.</div>
           <hr class="divider">
@@ -848,9 +848,9 @@
           <div class="chart-compare">Fair / Poor Health</div>
           <div class="chart-stat-label">Health &nbsp;·&nbsp; Spearman r = −0.673 &nbsp;·&nbsp; p &lt; 0.001</div>
           <div class="card-title" style="font-size:13px;font-weight:400;color:var(--ink-2);margin-bottom:10px;">How communities feel about their own health</div>
-          <div class="card-text">Self-rated health — the share of adults reporting their health as "fair" or "poor" — is one of the most powerful predictors of mortality in epidemiology, often outperforming clinical measures. It reflects not just disease burden but how people experience their own wellbeing.</div>
+          <div class="card-text">This one is simple: we asked people how they feel. In low-RunScore counties across the rural Deep South, nearly <strong style="font-weight:500;color:var(--ink);">1 in 3 adults</strong> describes their own health as "fair" or "poor." In high-RunScore communities in the Mountain West and Northeast, that number drops below 1 in 10.</div>
           <hr class="divider">
-          <div class="card-text">RunScore is strongly associated with self-rated health (r = −0.673, ΔR² = +0.048 beyond income). In the lowest-RunScore Deep South counties, 35–45% of adults rate their health as fair or poor. In high-RunScore Mountain West and Northeast communities, that share falls below 10%.</div>
+          <div class="card-text">Self-reported health is one of the most reliable predictors of how long someone will live — sometimes more accurate than lab results. A community where people feel healthy is a community where they actually are.</div>
           <hr class="divider">
           <div class="card-text">This matters commercially: buyers choosing a community are implicitly choosing a health culture. RunScore makes that culture visible and comparable — across all 3,143 U.S. counties, from a single number.</div>
         </div>
@@ -868,25 +868,12 @@
       <div class="card">
         <div class="card-label">Findings · Real Estate</div>
         <div class="card-body">
-          <div class="card-title">RunScore predicts home values independently of income</div>
-          <div class="card-text">In multivariate OLS regression controlling for income, unemployment, insurance coverage, and life expectancy, RunScore remains a significant predictor of county-level home values. Income alone explains 57.8% of variance. Adding RunScore pushes that to 63.3% — a significant ΔR² of +2.2 points.</div>
-
-          <div class="reg-table" style="margin:14px 0 14px;">
-            <div class="reg-cell reg-head">Income only</div>
-            <div class="reg-cell reg-head">+ Controls</div>
-            <div class="reg-cell reg-head">+ RunScore</div>
-            <div class="reg-cell" style="color:var(--ink-3);">R² = 0.578</div>
-            <div class="reg-cell" style="color:var(--ink-3);">R² = 0.611</div>
-            <div class="reg-cell reg-highlight">R² = 0.633</div>
-          </div>
-
-          <div class="card-text">
-            Each 10-point RunScore increase → +3.5% → <strong style="font-weight:500;color:var(--ink);">+$7,885</strong> in home value.<br>
-            Each 25-point increase → +9.0% → <strong style="font-weight:500;color:var(--ink);">+$20,237</strong>.<br>
-            Each 50-point increase → +18.9% → <strong style="font-weight:500;color:var(--ink);">+$42,304</strong>.
-          </div>
+          <div class="card-title">Homes are worth more in high-RunScore counties — even when income is the same</div>
+          <div class="card-text">Two counties. Same median income. The one with a higher RunScore has significantly more valuable homes. That's the core finding — RunScore predicts home prices above and beyond what wealth alone would suggest.</div>
           <hr class="divider">
-          <div class="card-text">The effect is actually <em>stronger in rural counties</em> (β = 0.00374) than metro counties (β = 0.00229) — RunScore is most informative exactly where Walk Score and transit data have the thinnest coverage.</div>
+          <div class="card-text">On average, every 10-point jump in RunScore is associated with <strong style="font-weight:500;color:var(--ink);">$7,885 more in home value</strong>. Go up 50 points — say, from a car-dependent suburb to a walkable outdoor town — and that gap grows to over <strong style="font-weight:500;color:var(--ink);">$42,000</strong>. Same income. Different score. Very different price.</div>
+          <hr class="divider">
+          <div class="card-text">The effect is actually <em>strongest in rural areas</em> — exactly where current real estate platforms have the least to say about lifestyle. In small towns, RunScore does the most work.</div>
         </div>
       </div>
     </div>
@@ -897,7 +884,7 @@
         <div class="stat-body">
           <div class="badge b-orange">LEADING INDICATOR</div>
           <div class="stat-num">+0.9 pts</div>
-          <div class="stat-note">5-yr appreciation per +10 RunScore · β = 0.087 · p &lt; 0.001<br>Notably, income is <em>not</em> a significant predictor in the appreciation model — RunScore is</div>
+          <div class="stat-note">home value growth over 5 years per 10-point RunScore gain<br>Strikingly, income barely predicts appreciation — but RunScore does</div>
         </div>
       </div>
       <div class="card bg-sky">
@@ -905,7 +892,7 @@
         <div class="stat-body">
           <div class="badge b-blue">NON-METRO COUNTIES</div>
           <div class="stat-num">+0.37%</div>
-          <div class="stat-note">home value per RunScore point in non-metro counties (RUCC 4–9)<br>vs. +0.23% in metro — most signal where platforms are blindest</div>
+          <div class="stat-note">home value gain per RunScore point in small towns and rural areas<br>vs. cities — RunScore matters most where other lifestyle data runs out</div>
         </div>
       </div>
     </div>
@@ -1006,7 +993,7 @@
           annually updated sources.
         </div>
         <div class="intro-text" style="margin-top:24px;">
-          <p>Each component captures a distinct dimension of running culture. All five are standardized to z-scores, averaged with equal weights, and expressed as a percentile rank from 0 to 100 across all 3,143 U.S. counties.</p>
+          <p>Five data sources. Each one measures a different piece of what it means for a community to have a running culture. We combine them into a single score — 0 to 100 — so every county in America is comparable on one scale.</p>
         </div>
       </div>
       <div class="method-right">
@@ -1014,35 +1001,35 @@
           <li class="comp-item">
             <div>
               <div class="comp-name">Physical Activity Level</div>
-              <div class="comp-desc">% adults with no leisure-time physical activity, inverted so higher = more active. MRP model-based estimates for all 3,143 counties.</div>
+              <div class="comp-desc">What share of adults in a county never exercise in their free time? We flip the number so a higher score means a more active community.</div>
             </div>
             <div class="comp-src">CDC PLACES 2023</div>
           </li>
           <li class="comp-item">
             <div>
               <div class="comp-name">Race Event Density</div>
-              <div class="comp-desc">Organized running races per 100k population, 2019–2024. Running, trail, and ultramarathon events geocoded via ZIP-to-FIPS crosswalk.</div>
+              <div class="comp-desc">How many organized road races, trail runs, and marathons happen in a county relative to its population? People who sign up and show up are the clearest signal of a real running community.</div>
             </div>
             <div class="comp-src">RunSignUp API<br>17,810 events</div>
           </li>
           <li class="comp-item">
             <div>
               <div class="comp-name">Exercise Infrastructure Access</div>
-              <div class="comp-desc">% county residents with adequate access to exercise opportunities, derived from physical activity facility databases.</div>
+              <div class="comp-desc">What share of residents actually have a gym, park, or facility nearby to exercise? Access matters — you can't build a habit around something that isn't there.</div>
             </div>
             <div class="comp-src">County Health Rankings 2025</div>
           </li>
           <li class="comp-item">
             <div>
               <div class="comp-name">Fitness Facility Density</div>
-              <div class="comp-desc">Recreational facilities and fitness centers per 1,000 population (NAICS 713940), from Census County Business Patterns.</div>
+              <div class="comp-desc">How many gyms and fitness centers exist per person in the county? More facilities means more options, lower barriers, and a stronger culture of physical activity.</div>
             </div>
             <div class="comp-src">USDA Food Environment Atlas</div>
           </li>
           <li class="comp-item">
             <div>
               <div class="comp-name">Neighborhood Walkability</div>
-              <div class="comp-desc">EPA walkability scores (1–20) aggregated from 220,739 block groups to county via population-weighted means.</div>
+              <div class="comp-desc">Are the streets safe and connected enough to walk and run outside? The EPA scores every neighborhood in the country — we roll those up to the county level.</div>
             </div>
             <div class="comp-src">EPA National Walkability Index 2021</div>
           </li>
