@@ -679,6 +679,10 @@
       -webkit-transform: translateY(0);
     }
 
+    /* ─── Card detail (hidden on page, visible in lightbox) ─── */
+    .card-detail { display: none; }
+    #lb-content .card-detail { display: contents; }
+
     /* ─── Scrollbar ─── */
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -946,11 +950,7 @@
       </div>
       <div class="intro-text" style="margin-top:20px;">
         <p>
-          This is RunScore — a measure of <strong>running culture</strong> built for every U.S.
-          county. All 3,143 of them get a score from 0 to 100, constructed from five public
-          datasets: how active residents are, how many races they organize, how walkable their
-          streets are, and whether the fitness infrastructure to support it all actually exists
-          on the ground.
+          A score from 0 to 100 for every U.S. county — measuring <strong>running culture</strong>: races, activity levels, walkability, and fitness infrastructure.
         </p>
       </div>
     </div>
@@ -958,14 +958,7 @@
     <div class="hero-right">
       <div class="intro-text">
         <p>
-          The question we set out to answer: does a community that <em>runs</em> also live
-          longer, stay healthier, and hold its real estate value better? The answer is yes —
-          and the effect is large enough that a 10-point RunScore advantage predicts
-          <strong>$7,885 more in median home value</strong>, even after controlling for income.
-        </p>
-        <p>
-          RunScore is the signal that's missing from every real estate platform. Not
-          walkability. Not school ratings. Whether the people in a community actually move.
+          Communities that run live longer, stay healthier, and hold their home values better. A 10-point RunScore advantage predicts <strong>$7,885 more in median home value</strong>, even after controlling for income.
         </p>
       </div>
     </div>
@@ -981,11 +974,13 @@
         <div class="card-label">Geography · National Distribution</div>
         <div class="card-body">
           <div class="card-title">Running culture has a geography — and it is not random</div>
-          <div class="card-text">High-RunScore counties cluster in the <strong style="font-weight:500;color:var(--ink);">Northeast corridor</strong> (DC, Boston, New York), the <strong style="font-weight:500;color:var(--ink);">Mountain West</strong> (MT, WY, CO, UT), the Pacific Northwest, and dense coastal metros. These are places where people have built — and continue to invest in — the conditions for an active lifestyle.</div>
+          <div class="card-text">High-RunScore counties cluster in the <strong style="font-weight:500;color:var(--ink);">Northeast</strong>, <strong style="font-weight:500;color:var(--ink);">Mountain West</strong>, and Pacific Northwest. Low-RunScore counties concentrate in the rural Deep South and Great Plains.</div>
+          <div class="card-detail">
           <hr class="divider">
-          <div class="card-text">Low-RunScore counties concentrate in the <strong style="font-weight:500;color:var(--ink);">rural Deep South</strong> (MS, AL, LA), the Texas Panhandle, and the Northern Great Plains. Physical inactivity rates in these counties often exceed 45–60%. Zero organized races. Near-zero walkability.</div>
+          <div class="card-text">Physical inactivity in the lowest-RunScore counties often exceeds 45–60%. Zero organized races. Near-zero walkability.</div>
           <hr class="divider">
-          <div class="card-text">Every county gets a score from 0 to 100. A score of 50 is exactly average. The map makes the pattern impossible to miss — running culture isn't spread evenly across the country. It clusters. It has neighbors.</div>
+          <div class="card-text">Every county gets a score from 0 to 100. A score of 50 is exactly average. The map makes the pattern impossible to miss — running culture isn't spread evenly. It clusters. It has neighbors.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1032,11 +1027,13 @@
           <div class="chart-compare">Obesity Rate</div>
           <div class="chart-stat-label">Health &nbsp;·&nbsp; Spearman r = −0.570 &nbsp;·&nbsp; p &lt; 0.001</div>
           <div class="card-title" style="font-size:13px;font-weight:400;color:var(--ink-2);margin-bottom:10px;">Higher RunScore communities carry less obesity</div>
-          <div class="card-text">About 42% of American adults are obese. But that number isn't the same everywhere — and RunScore is one of the clearest predictors of where it's lower. High-RunScore counties consistently have fewer obese residents, and the relationship holds even when you compare counties at the same income level.</div>
+          <div class="card-text">High-RunScore counties consistently have lower obesity — even at the same income level.</div>
+          <div class="card-detail">
           <hr class="divider">
-          <div class="card-text">In a county with 25,000 adults, moving from a low to a high RunScore is associated with roughly <strong style="font-weight:500;color:var(--ink);">675 fewer people with obesity</strong>. That's not a rounding error — it's a meaningful shift in the health of an entire community.</div>
+          <div class="card-text">About 42% of American adults are obese, but that number isn't the same everywhere. In a county of 25,000 adults, moving from a low to a high RunScore is associated with roughly <strong style="font-weight:500;color:var(--ink);">675 fewer people with obesity</strong>.</div>
           <hr class="divider">
-          <div class="card-text">Wealth isn't the whole story. RunScore picks up something that money alone doesn't buy: a culture where moving is normal, infrastructure exists, and neighbors set the pace.</div>
+          <div class="card-text">Wealth isn't the whole story. RunScore picks up something money alone doesn't buy: a culture where moving is normal, infrastructure exists, and neighbors set the pace.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1051,11 +1048,13 @@
           <div class="chart-compare">Diabetes Rate</div>
           <div class="chart-stat-label">Health &nbsp;·&nbsp; Spearman r = −0.676 &nbsp;·&nbsp; p &lt; 0.001</div>
           <div class="card-title" style="font-size:13px;font-weight:400;color:var(--ink-2);margin-bottom:10px;">The strongest health signal in the study</div>
-          <div class="card-text">Of all the health outcomes studied, diabetes tracks most closely with RunScore. That makes sense — diabetes is deeply tied to inactivity, and running culture is a direct measure of how active a community actually is, not just how active its residents say they are.</div>
+          <div class="card-text">The strongest health signal in this study. <strong style="font-weight:500;color:var(--ink);">1 in 5</strong> adults in the lowest-RunScore counties has diabetes. In Jackson Hole — <strong style="font-weight:500;color:var(--ink);">1 in 11</strong>.</div>
+          <div class="card-detail">
           <hr class="divider">
-          <div class="card-text">In the lowest-RunScore counties — rural Mississippi and Alabama — more than <strong style="font-weight:500;color:var(--ink);">1 in 5 adults has diabetes</strong>. In high-RunScore mountain communities like Jackson Hole, Wyoming, that drops below 1 in 11. Same country. Vastly different realities.</div>
+          <div class="card-text">Of all health outcomes studied, diabetes tracks most closely with RunScore — because diabetes is deeply tied to inactivity, and running culture directly measures how active a community actually is.</div>
           <hr class="divider">
-          <div class="card-text">The gap shows up at every income level. Rich counties with low RunScores still have worse diabetes outcomes than middle-income counties with high RunScores. Running culture does something wealth alone doesn't.</div>
+          <div class="card-text">The gap shows up at every income level. Rich counties with low RunScores still have worse diabetes outcomes than middle-income counties with high RunScores.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1070,11 +1069,13 @@
           <div class="chart-compare">Life Expectancy</div>
           <div class="chart-stat-label">Health &nbsp;·&nbsp; Spearman r = +0.582 &nbsp;·&nbsp; p &lt; 0.001</div>
           <div class="card-title" style="font-size:13px;font-weight:400;color:var(--ink-2);margin-bottom:10px;">People live longer in high-RunScore counties</div>
-          <div class="card-text">If all the other health numbers feel abstract, life expectancy doesn't. It's the bottom line — how long do people actually live here? And high-RunScore counties consistently come out ahead, even after accounting for how wealthy or urban a county is.</div>
+          <div class="card-text">Teton County, WY: <strong style="font-weight:500;color:var(--ink);">87.6 years</strong>. Oglala Lakota, SD: <strong style="font-weight:500;color:var(--ink);">56.9 years</strong>. A 30-year gap — visible in a single number.</div>
+          <div class="card-detail">
           <hr class="divider">
-          <div class="card-text">The extremes tell the full story. Teton County, WY (RunScore 99.8) has a life expectancy of <strong style="font-weight:500;color:var(--ink);">87.6 years</strong> — among the longest of any county in the United States. Oglala Lakota County, SD (RunScore 0.2) has a life expectancy of <strong style="font-weight:500;color:var(--ink);">56.9 years</strong>, comparable to some developing nations.</div>
+          <div class="card-text">Life expectancy is the bottom line — how long do people actually live here? High-RunScore counties consistently come out ahead, even after accounting for income and urbanicity.</div>
           <hr class="divider">
           <div class="card-text">This 30-year gap is not caused by running. But it is measured by RunScore — and RunScore is a way to see that dimension of community wellbeing at national scale.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1089,11 +1090,13 @@
           <div class="chart-compare">Fair / Poor Health</div>
           <div class="chart-stat-label">Health &nbsp;·&nbsp; Spearman r = −0.673 &nbsp;·&nbsp; p &lt; 0.001</div>
           <div class="card-title" style="font-size:13px;font-weight:400;color:var(--ink-2);margin-bottom:10px;">How communities feel about their own health</div>
-          <div class="card-text">This one is simple: we asked people how they feel. In low-RunScore counties across the rural Deep South, nearly <strong style="font-weight:500;color:var(--ink);">1 in 3 adults</strong> describes their own health as "fair" or "poor." In high-RunScore communities in the Mountain West and Northeast, that number drops below 1 in 10.</div>
+          <div class="card-text">In low-RunScore counties, nearly <strong style="font-weight:500;color:var(--ink);">1 in 3 adults</strong> rates their health as fair or poor. In high-RunScore communities, below 1 in 10.</div>
+          <div class="card-detail">
           <hr class="divider">
           <div class="card-text">Self-reported health is one of the most reliable predictors of how long someone will live — sometimes more accurate than lab results. A community where people feel healthy is a community where they actually are.</div>
           <hr class="divider">
-          <div class="card-text">This matters commercially: buyers choosing a community are implicitly choosing a health culture. RunScore makes that culture visible and comparable — across all 3,143 U.S. counties, from a single number.</div>
+          <div class="card-text">Buyers choosing a community are implicitly choosing a health culture. RunScore makes that culture visible and comparable across all 3,143 U.S. counties.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1110,11 +1113,13 @@
         <div class="card-label">Findings · Real Estate</div>
         <div class="card-body">
           <div class="card-title">Homes are worth more in high-RunScore counties — even when income is the same</div>
-          <div class="card-text">Two counties. Same median income. The one with a higher RunScore has significantly more valuable homes. That's the core finding — RunScore predicts home prices above and beyond what wealth alone would suggest.</div>
+          <div class="card-text">Every 10-point RunScore increase predicts <strong style="font-weight:500;color:var(--ink);">$7,885 more in home value</strong> — even comparing counties at the same income level.</div>
+          <div class="card-detail">
           <hr class="divider">
-          <div class="card-text">On average, every 10-point jump in RunScore is associated with <strong style="font-weight:500;color:var(--ink);">$7,885 more in home value</strong>. Go up 50 points — say, from a car-dependent suburb to a walkable outdoor town — and that gap grows to over <strong style="font-weight:500;color:var(--ink);">$42,000</strong>. Same income. Different score. Very different price.</div>
+          <div class="card-text">Two counties. Same median income. The one with the higher RunScore has significantly more valuable homes. Go up 50 points — from a car-dependent suburb to a walkable outdoor town — and that gap grows to over <strong style="font-weight:500;color:var(--ink);">$42,000</strong>.</div>
           <hr class="divider">
-          <div class="card-text">The effect is actually <em>strongest in rural areas</em> — exactly where current real estate platforms have the least to say about lifestyle. In small towns, RunScore does the most work.</div>
+          <div class="card-text">The effect is <em>strongest in rural areas</em> — exactly where real estate platforms have the least lifestyle data. In small towns, RunScore does the most work.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1149,11 +1154,13 @@
         <div class="card-label">Community Profiles · Deep Dive</div>
         <div class="card-body">
           <div class="card-title">The gap between extremes</div>
-          <div class="card-text"><strong style="font-weight:500;color:var(--ink);">Teton County, WY</strong> (Jackson Hole) — RunScore 99.8. Life expectancy 87.6 years, the longest in this study. Obesity 24.0%, diabetes 8.4%. Home values $2.1M. Five-year appreciation +67.5%.</div>
+          <div class="card-text"><strong style="font-weight:500;color:var(--ink);">Teton County, WY</strong> — RunScore 99.8. Life expectancy 87.6 yrs. Home values $2.1M.</div>
           <hr class="divider">
-          <div class="card-text"><strong style="font-weight:500;color:var(--ink);">Oglala Lakota County, SD</strong> — RunScore 0.2. Life expectancy 56.9 years, among the shortest in the United States. Obesity 47.0%, diabetes 21.1%. Zero organized races. Exercise access 1.9%.</div>
+          <div class="card-text"><strong style="font-weight:500;color:var(--ink);">Oglala Lakota, SD</strong> — RunScore 0.2. Life expectancy 56.9 yrs. Zero organized races.</div>
+          <div class="card-detail">
           <hr class="divider">
-          <div class="card-text">The 30-year gap in life expectancy between these two counties is not explained by running. But running culture is one measurable dimension of what separates them — and RunScore is a way to see and compare that dimension at scale, across all 3,143 U.S. counties.</div>
+          <div class="card-text">The 30-year gap in life expectancy between these two counties isn't explained by running alone. But running culture is one measurable dimension of what separates them — and RunScore puts a number on it for all 3,143 U.S. counties.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1285,9 +1292,11 @@
       <div class="card-label">Applications · Real Estate Platforms</div>
       <div class="card-body">
         <div class="card-title">Built for Zillow-scale integration</div>
-        <div class="card-text">RunScore sits alongside Walk Score and school ratings on individual property listings. It captures a dimension none of the existing signals address: whether a community has built the conditions for a physically active lifestyle. Walk Score measures pedestrian convenience. School ratings measure educational outcomes. RunScore measures whether people actually exercise.</div>
+        <div class="card-text">RunScore sits alongside Walk Score and school ratings — capturing the one dimension they don't: whether a community has actually built the conditions for an active lifestyle.</div>
+        <div class="card-detail">
         <hr class="divider">
-        <div class="card-text">All five RunScore components derive from publicly available, annually updated datasets. No proprietary data, no API licensing fees, no survey infrastructure. A platform could compute and publish RunScore for all 3,143 U.S. counties at negligible marginal cost — and update it annually as CDC, EPA, and RunSignUp data refresh.</div>
+        <div class="card-text">All five components come from publicly available, annually updated datasets. No proprietary data, no licensing fees. A platform could publish RunScore for all 3,143 counties and update it every year as CDC, EPA, and RunSignUp data refresh.</div>
+        </div>
         <div class="tag-row">
           <span class="badge b-gray">LISTING BADGE</span>
           <span class="badge b-gray">SEARCH FILTER</span>
