@@ -648,11 +648,15 @@
       opacity: 0;
       transform: translateY(32px);
       transition: opacity 0.6s cubic-bezier(.22,.68,0,1), transform 0.6s cubic-bezier(.22,.68,0,1);
+      will-change: opacity, transform;
+      -webkit-transform: translateY(32px);
+      -webkit-transition: opacity 0.6s cubic-bezier(.22,.68,0,1), -webkit-transform 0.6s cubic-bezier(.22,.68,0,1);
     }
 
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+      -webkit-transform: translateY(0);
     }
 
     /* ─── Scrollbar ─── */
@@ -1294,22 +1298,26 @@
     '.card, .feat-img, .method-layout, .hero-wordmark, .stat-row > .card'
   );
 
+  const isMobile = () => window.innerWidth <= 700;
+
   revealEls.forEach(el => {
     el.classList.add('reveal');
 
-    // Stagger cards within the same stat-row
-    const parent = el.parentElement;
-    if (parent && parent.classList.contains('stat-row')) {
-      const siblings = Array.from(parent.children);
-      const idx = siblings.indexOf(el);
-      el.style.transitionDelay = `${idx * 0.1}s`;
-    }
+    if (!isMobile()) {
+      // Stagger cards within the same stat-row
+      const parent = el.parentElement;
+      if (parent && parent.classList.contains('stat-row')) {
+        const siblings = Array.from(parent.children);
+        const idx = siblings.indexOf(el);
+        el.style.transitionDelay = `${idx * 0.1}s`;
+      }
 
-    // Stagger feat-img / card within the same feature row
-    if (parent && parent.classList.contains('feature')) {
-      const siblings = Array.from(parent.children);
-      const idx = siblings.indexOf(el);
-      el.style.transitionDelay = `${idx * 0.12}s`;
+      // Stagger feat-img / card within the same feature row
+      if (parent && parent.classList.contains('feature')) {
+        const siblings = Array.from(parent.children);
+        const idx = siblings.indexOf(el);
+        el.style.transitionDelay = `${idx * 0.12}s`;
+      }
     }
   });
 
@@ -1321,7 +1329,7 @@
         entry.target.classList.remove('visible');
       }
     });
-  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.04, rootMargin: '0px 0px -10px 0px' });
 
   revealEls.forEach(el => revealObserver.observe(el));
 
