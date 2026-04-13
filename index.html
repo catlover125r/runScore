@@ -100,27 +100,33 @@
     }
     .dropdown-menu {
       position: absolute;
-      top: calc(100% + 6px);
+      top: 100%;
       left: 50%;
       transform: translateX(-50%);
+      padding-top: 6px;
+      min-width: 160px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s, transform .18s;
+      z-index: 200;
+    }
+    .dropdown-menu-inner {
       background: rgba(255,255,255,0.97);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--rule);
       border-radius: 8px;
       padding: 6px 0;
-      min-width: 160px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateX(-50%) translateY(-4px);
-      transition: opacity .18s, transform .18s;
-      z-index: 200;
+      transform: translateY(-4px);
+      transition: transform .18s;
     }
     .nav-dropdown:hover .dropdown-menu {
       opacity: 1;
       pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown:hover .dropdown-menu-inner {
+      transform: translateY(0);
     }
     .dropdown-menu a {
       display: block;
@@ -665,10 +671,12 @@
       <div class="nav-dropdown">
         <a href="#health">Health</a>
         <div class="dropdown-menu">
-          <a href="#health-obesity">Obesity Rate</a>
-          <a href="#health-diabetes">Diabetes Rate</a>
-          <a href="#health-lifeexp">Life Expectancy</a>
-          <a href="#health-fairpoor">Fair / Poor Health</a>
+          <div class="dropdown-menu-inner">
+            <a href="#health-obesity">Obesity Rate</a>
+            <a href="#health-diabetes">Diabetes Rate</a>
+            <a href="#health-lifeexp">Life Expectancy</a>
+            <a href="#health-fairpoor">Fair / Poor Health</a>
+          </div>
         </div>
       </div>
       <a href="#realestate">Real Estate</a>
