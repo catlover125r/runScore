@@ -76,6 +76,64 @@
 
     nav a:hover { color: var(--ink); }
 
+    /* ─── Nav dropdown ─── */
+    .nav-dropdown {
+      position: relative;
+    }
+    .nav-dropdown > a {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .nav-dropdown > a::after {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-1px);
+      transition: transform .18s;
+    }
+    .nav-dropdown:hover > a::after {
+      transform: rotate(225deg) translateY(-1px);
+    }
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 6px 0;
+      min-width: 160px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-50%) translateY(-4px);
+      transition: opacity .18s, transform .18s;
+      z-index: 200;
+    }
+    .nav-dropdown:hover .dropdown-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 7px 16px;
+      font-size: 12px;
+      color: var(--ink-2);
+      white-space: nowrap;
+    }
+    .dropdown-menu a:hover {
+      color: var(--ink);
+      background: var(--rule-soft);
+    }
+
     .nav-brand {
       color: var(--ink) !important;
       font-weight: 500;
@@ -605,7 +663,15 @@
       <a class="nav-brand" href="#">RunScore</a>
       <a href="#geography">Geography</a>
       <a href="#realestate">Real Estate</a>
-      <a href="#health">Health</a>
+      <div class="nav-dropdown">
+        <a href="#health">Health</a>
+        <div class="dropdown-menu">
+          <a href="#health-obesity">Obesity Rate</a>
+          <a href="#health-diabetes">Diabetes Rate</a>
+          <a href="#health-lifeexp">Life Expectancy</a>
+          <a href="#health-fairpoor">Fair / Poor Health</a>
+        </div>
+      </div>
       <a href="#communities">Communities</a>
       <a href="#method">Method</a>
     </div>
@@ -760,7 +826,7 @@
   <section id="health">
 
     <!-- 1 · Obesity — chart LEFT, text RIGHT -->
-    <div class="feature">
+    <div class="feature" id="health-obesity">
       <div class="feat-img">
         <img src="figures/fig_health_obesity.png" alt="RunScore vs. Obesity Rate">
       </div>
@@ -779,7 +845,7 @@
     </div>
 
     <!-- 2 · Diabetes — text LEFT, chart RIGHT -->
-    <div class="feature flip" style="margin-top:var(--gap);">
+    <div class="feature flip" id="health-diabetes" style="margin-top:var(--gap);">
       <div class="feat-img">
         <img src="figures/fig_health_diabetes.png" alt="RunScore vs. Diabetes Rate">
       </div>
@@ -798,7 +864,7 @@
     </div>
 
     <!-- 3 · Life Expectancy — chart LEFT, text RIGHT -->
-    <div class="feature" style="margin-top:var(--gap);">
+    <div class="feature" id="health-lifeexp" style="margin-top:var(--gap);">
       <div class="feat-img">
         <img src="figures/fig_health_lifeexp.png" alt="RunScore vs. Life Expectancy">
       </div>
@@ -817,7 +883,7 @@
     </div>
 
     <!-- 4 · Fair/Poor Health — text LEFT, chart RIGHT -->
-    <div class="feature flip" style="margin-top:var(--gap);">
+    <div class="feature flip" id="health-fairpoor" style="margin-top:var(--gap);">
       <div class="feat-img">
         <img src="figures/fig_health_fairpoor.png" alt="RunScore vs. Fair/Poor Health">
       </div>
